@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /*?*
+
+//Sitemap: http://bark.tecnologia.ws/superacao/sitemap.xml
