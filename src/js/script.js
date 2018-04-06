@@ -8,8 +8,8 @@ $('.filtroslk').slick({
     dots:false,
     infinite: false,
     speed: 300,
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     centerMode: false,
     variableWidth: true,
     cssEase: 'linear',
@@ -20,26 +20,58 @@ $('.filtroslk').slick({
 //---------------------------------------------
 // JSON CUPONS + FILTROS
 
+var lista;
+
 $.get({
     url: "cupons.json",
     dataType: "json",
     success:function(data) {
         var list = $(".cupons-pR");
+        lista = data;
         $.each(data, function(idx, obj) {
             $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
         });
 
+        if($("li.cupom-pR").is(":visible") == false){
+            $('.fltnt').show();
+            $('.fltnt').html('Nenhum cupom foi encontrado.');
+        }
+
         $('.filtro-es[data-action]').on("click",data, function(idx, obj){
             var type = $(this).prop('id');
             $('#rmvflt').show();
-            console.log("ESSE CLICK:" ,data)
+            $('#vmr').hide();
+            $('.fltnt').hide();
+            $('.cupom-pR').remove();
 
             if (this.id == type) {
-                $('.fltnt').hide();
-                $('#vmr').parent().hide();
-                $(".cupom-pR").hide();
-                $(".cupom-pR[data-type='" + type + "']").show();
-                $(".cupom-pR:nth-child(3n+1)[data-type='" + type + "']").css("clear", "none");
+                lista.forEach((obj, idx) => {
+                    switch(type){
+                        case 'quartodebebe':
+                            if(obj.type == 'quartodebebe'){
+                                $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                            }
+                        break;
+    
+                        case 'kitberco':
+                            if(obj.type == 'kitberco'){
+                                $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                            }
+                        break;
+    
+                        case 'bolsas':
+                            if(obj.type == 'bolsas'){
+                                $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                            }
+                        break;
+    
+                        case 'nichos':
+                            if(obj.type == 'nichos'){
+                                $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                            }
+                        break;
+                    }
+                });
 
                 if($("li.cupom-pR").is(":visible") == false){
                     $('.fltnt').show();
@@ -53,61 +85,18 @@ $.get({
         });
 
         $('#rmvflt').on("click", function(){
-                $('.fltnt').hide();
-                $('#vmr').parent().show();
-                $(".cupom-pR").show();
-                $(".cupom-pR:nth-child(1n+7)").hide();
-                $(".cupom-pR:nth-child(3n+1)").css("clear", "both");
-                $('#rmvflt').hide();
+            $('.cupom-pR').remove();
+            $('#vmr').show();
+            $('#rmvflt').hide();
+            $('.fltnt').hide();
+
+            lista.forEach((obj, idx) => {
+                $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+            });
         });
         cupomoft();
     }
 });
-
-
-// BACKUP
-// $.get({
-//     url: "cupons.json",
-//     dataType: "json",
-//     success:function(data) {
-//         var list = $(".cupons-pR");
-//         $.each(data, function(idx, obj) {
-//             $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
-//         });
-
-//         $('.filtro-es[data-action]').on("click",data, function(idx, obj){
-//             var type = $(this).prop('id');
-//             $('#rmvflt').show();
-//             console.log("ESSE CLICK:" ,data)
-
-//             if (this.id == type) {
-//                 $('.fltnt').hide();
-//                 $('#vmr').parent().hide();
-//                 $(".cupom-pR").hide();
-//                 $(".cupom-pR[data-type='" + type + "']").show();
-//                 $(".cupom-pR:nth-child(3n+1)").css("clear", "none");
-
-//                 if($("li.cupom-pR").is(":visible") == false){
-//                     $('.fltnt').show();
-//                     $('.fltnt').html('Nenhum cupom foi encontrado.');
-//                 }
-//             } else{
-//                 $("li").show();
-//                 console.log('ERROR');
-//             }
-//         });
-
-//         $('#rmvflt').on("click", function(){
-//                 $('.fltnt').hide();
-//                 $('#vmr').parent().show();
-//                 $(".cupom-pR").show();
-//                 $(".cupom-pR:nth-child(1n+7)").hide();
-//                 $(".cupom-pR:nth-child(3n+1)").css("clear", "both");
-//                 $('#rmvflt').hide();
-//         });
-//         cupomoft();
-//     }
-// });
 
 //---------------------------------------------
 // VERIFICAÇÃO BOTÃO CUPONS
@@ -189,5 +178,3 @@ FB.getLoginStatus(function(response){
 });
 
 //---------------------------------------------
-
-
