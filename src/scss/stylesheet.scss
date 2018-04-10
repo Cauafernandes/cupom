@@ -965,5 +965,39 @@ footer{
 }
 
 @media only screen and (max-width: 400px) {
+  .cupons-pR{
+    .cupom-pR{
+      max-width: 265px;
+      margin: 5% auto;
+      float:initial;
+
+      figure{
+        img{
+          height: 230px;
+        }
+      }
+
+      h2{
+        font-size: 17px;
+      }
+    }
+  }
+
+
+  .menu-pR{
+    figure{
+      margin:10px auto!important;
+
+      img{
+        max-width: 280px;
+      }
+    }
+  }
+
+  footer{
+    h5{
+      font-size: 8px;
+    }
+  }
 
 }

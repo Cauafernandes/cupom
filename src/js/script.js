@@ -37,10 +37,10 @@ $.get({
             $('.fltnt').html('Nenhum cupom foi encontrado.');
         }
 
-        $('.filtro-es[data-action]').on("click",data, function(idx, obj){
+        $('.filtro-es[data-action]').on("click", data, function(idx, obj){
             var type = $(this).prop('id');
             $('#rmvflt').show();
-            $('#vmr').hide();
+            $('.more').hide();
             $('.fltnt').hide();
             $('.cupom-pR').remove();
 
@@ -79,14 +79,16 @@ $.get({
                 }
                 
             } else{
-                $("li").show();
+                lista.forEach((obj, idx) => {
+                    $("<li class='cupom-pR' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                });
                 console.log('ERROR');
             }
         });
 
         $('#rmvflt').on("click", function(){
             $('.cupom-pR').remove();
-            $('#vmr').show();
+            $('.more').show();
             $('#rmvflt').hide();
             $('.fltnt').hide();
 
@@ -160,7 +162,7 @@ FB.init({
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
-        console.log(response)
+        console.log(response);
     });
 }
 
@@ -169,10 +171,10 @@ FB.getLoginStatus(function(response){
     console.log('Verificando conexão');
     if (response.authResponse) {
         FB.api('/me', function(response) {
-            console.log('Bem vindo, ' + response.name + '.')
+            console.log('Bem vindo, ' + response.name + '.');
         }); 
     } else {
-        console.log('Não houve uma conexão.')
+        console.log('Não houve uma conexão.');
         return;
     }
 });
