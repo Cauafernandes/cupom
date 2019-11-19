@@ -2,12 +2,12 @@
 <html lang="pt-br">
     <head>
     <meta charset="utf-8">
-        <title>Grão de Gente - Cupons</title>
-        <meta name="author" content="BARK">
-        <meta name="description" content="Cupom Grão de Gente">
+        <title>Mopuc</title>
+        <meta name="author" content="Cauafernandes">
+        <meta name="description" content="Site para resgate de cupoms | Mopuc">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
         <link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="css/stylesheet.css"/>
+        <link rel="stylesheet" href="css/site.css"/>
         <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link type="image/x-icon" rel="icon" href="assets/img/icon.jpg">

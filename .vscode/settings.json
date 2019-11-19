@@ -1,3 +1,4 @@
 {
-    "php.validate.executablePath": true
+    "php.validate.executablePath": true,
+    "git.ignoreLimitWarning": true
 }

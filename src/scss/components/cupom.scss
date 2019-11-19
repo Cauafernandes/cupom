@@ -1,0 +1,53 @@
+.cupons{
+    &--list{
+        justify-content: flex-start;
+        -webkit-box-pack: start;
+        -webkit-box-align: top;
+        -ms-flex-pack: start;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -ms-flex-align: top;
+        -ms-flex-wrap: wrap;
+        align-items: top;
+        flex-wrap: wrap;
+        padding: 50px 0;
+        display: flex;
+
+        & > * {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 19%;
+            max-width: 20%;
+            margin: 0 15px;
+            flex: 1 0 19%;
+        }
+    }
+
+    &--cupom{
+        background-color: #FFF;
+        box-shadow: 0 0 10px rgba(78, 78, 78, 0.7607843137254902);
+        transition: 0.3s all;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        text-align: center;
+        display: table;
+        padding: 15px;
+
+        img, figure{
+            max-width: 100px;
+            margin: 0 auto;
+            display: table;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:nth-child(4n+1){
+            clear: both;
+        }
+
+        &:nth-child(n+9){
+            display: none;
+        }
+    }
+}
