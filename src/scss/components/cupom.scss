@@ -1,14 +1,18 @@
 .cupons{
+    & &--filter {
+        margin: 50px auto 0;
+    }
+
     &--list{
         justify-content: flex-start;
+        -webkit-box-align: start;
         -webkit-box-pack: start;
-        -webkit-box-align: top;
+        align-items: flex-start;
+        -ms-flex-align: start;
         -ms-flex-pack: start;
         display: -webkit-box;
         display: -ms-flexbox;
-        -ms-flex-align: top;
         -ms-flex-wrap: wrap;
-        align-items: top;
         flex-wrap: wrap;
         padding: 50px 0;
         display: flex;
@@ -16,9 +20,9 @@
         & > * {
             -webkit-box-flex: 1;
             -ms-flex: 1 0 19%;
-            max-width: 20%;
-            margin: 0 15px;
+            max-width: 23%;
             flex: 1 0 19%;
+            margin: 0 1%;
         }
     }
 
@@ -29,13 +33,34 @@
         margin-bottom: 30px;
         border-radius: 5px;
         text-align: center;
+        min-height: 240px;
         display: table;
         padding: 15px;
 
+        h2 {
+            color: #000;
+        }
+
         img, figure{
+            margin: 10px auto;
             max-width: 100px;
-            margin: 0 auto;
             display: table;
+        }
+
+        .redeemOffer {
+            background-color: transparent;
+            text-transform: uppercase;
+            transition: 0.3s all;
+            font-weight: 600;
+            color: #fd1111;
+            cursor: pointer;
+            margin: 10px 0 0;
+            border: none;
+            padding: 0;
+            
+            &:hover{
+                color: #000;
+            }
         }
 
         &:hover {
@@ -48,6 +73,29 @@
 
         &:nth-child(n+9){
             display: none;
+        }
+    }
+
+    .moreCupoms, &--filter {
+        margin: 0 auto 60px;
+        max-width: 200px;
+        display: table;
+
+        button {
+            background-color: #FDD765;
+            text-transform: uppercase;
+            transition: 0.3s all;
+            border-radius: 5px;
+            line-height: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #FFF;
+            padding: 15px;
+            border: none;
+
+            &:hover{
+                background-color: #ccad51;
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ $.get({
             if ( filterCount.length == 0 ) {
                 $("<li class='filtro-es' id='" + obj.type + "' data-action><p>" + titleFilter + "</p></li>").appendTo(filters);
             }
-            $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+            $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
         });
 
         if($(".cupons--cupom").is(":visible") == false){
@@ -40,14 +40,14 @@ $.get({
 // VERIFICAÇÃO BOTÃO CUPONS
 
 $(document).ready(function() {
-    $('#rmvflt').on("click", function(){
+    $('#removeFilter').on("click", function(){
         $('.cupons--cupom').remove();
         $('.moreCupoms').show();
         $('.cupons--filter').hide();
         $('.fltnt').hide();
 
         cupoms.forEach((obj, idx) => {
-            $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+            $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
         });
     });
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
         if (this.id == type) {
             cupoms.forEach((obj, idx) => {
                 if ( obj.type == type ) {
-                    $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                    $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
                 }
             });
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
             
         } else{
             cupoms.forEach((obj, idx) => {
-                $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='vroft'>Ver Oferta</button></li>").appendTo(list);
+                $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
             });
         }
     });
@@ -87,7 +87,7 @@ $(document).ready(function() {
 // JANELA DO FACEBOOK
 
 var cupomoft = function(){
-    $('.vroft').on('click', function(){
+    $('.redeemOffer').on('click', function(){
         var timer = setInterval(function(){
             FB.getLoginStatus(function(response){
                 if($('#fblgn').hasClass('fblgn-active') && response.authResponse || response.authResponse){

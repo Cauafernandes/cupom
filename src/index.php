@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="cupons">
                   <div class="cupons--filter" style="display: none;">
-                     <button id="rmvflt" data-action>Remover Filtros</button>
+                     <button id="removeFilter" data-action>Remover Filtros</button>
                      <p class="fltnt" style="display: none;"></p>
                   </div>
                   <div id="cupons--messages" style="display: none;">

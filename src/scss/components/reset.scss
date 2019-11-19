@@ -433,4 +433,12 @@ section {
 
 p{
     margin:0;
-} 
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: 0;
+}

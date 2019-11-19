@@ -8,8 +8,7 @@
             </div>
         </div>
     </div>
-    <link rel="stylesheet" href="../plugin/slick-1.8.0/slick/slick.css">
-    <link rel="stylesheet" href="../plugin/slick-1.8.0/slick/slick-theme.css">
-    <script src="../plugin/slick-1.8.0/slick/slick.min.js"></script>
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 </footer>

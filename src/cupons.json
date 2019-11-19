@@ -62,7 +62,7 @@
     {
         "titulo": "Teste Cupom Hamburguer",
         "desc": "Descrição do cupom Hamburguer",
-        "image": "assets/img/cupons/pagamentoboleto.png",
+        "image": "assets/img/cupons/hamburguer.jpg",
         "type": "hamburguer"
     }
 ]
