@@ -1,0 +1,32 @@
+.modal{
+    background-color: rgba(0, 0, 0, 0.67);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    position: fixed;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    &--container{
+        background-color: #FFF;
+        border-radius: 5px;
+        padding: 20px;
+    }
+    
+    &--header{
+        padding-right: 40px;
+        position: relative;
+
+        #close {
+            position: absolute;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000;
+            right: -12px;
+            top: -15px;
+        }
+    }
+}

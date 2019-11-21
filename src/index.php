@@ -30,7 +30,8 @@
                   <i class="fas fa-times" id="close"></i>
                </div>
                <div class="modal--content">
-                  <p>Para habilitar seu cupom, logue com o facebook</p>
+                  <h3>Copie seu código</h3>
+                  <p id="cupomCode"></p>
                </div>
                <div class="modal--footer">
                </div>
