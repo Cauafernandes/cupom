@@ -8,8 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
         <link rel="stylesheet" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="css/site.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
         <link type="image/x-icon" rel="icon" href="assets/img/icon.jpg">
         <script type="text/javascript" src="https://connect.facebook.net/pt-br/sdk.js"></script>

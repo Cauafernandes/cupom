@@ -31,7 +31,10 @@
                </div>
                <div class="modal--content">
                   <h3>Copie seu código</h3>
-                  <p id="cupomCode"></p>
+                  <div class="cupomCode--area">
+                     <input type="text" id="cupomCode" readonly></input>
+                     <button id="copyToClipboard"><i class="fas fa-copy"></i></button>
+                  </div>
                </div>
                <div class="modal--footer">
                </div>

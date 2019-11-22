@@ -1,77 +1,26 @@
 console.log('Javascript Iniciado.');
 
 //---------------------------------------------
-
-var cupoms;
-var filters = $(".filtros--list");
-var list = $(".cupons--list");
-
-$.get({
-    url: "cupons.json",
-    dataType: "json",
-    success: function(data) {
-        cupoms = data;
-        $.each(cupoms, function(idx, obj) {
-            var titleFilter = obj.type.replace("-", " ");
-            var filterCount = $(filters).find('.filtro-es[id="' + obj.type + '"]');
-
-            if ( filterCount.length == 0 ) {
-                $("<li class='filtro-es' id='" + obj.type + "' data-action><p>" + titleFilter + "</p></li>").appendTo(filters);
-            }
-
-            $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
-        });
-
-        if($(".cupons--cupom").is(":visible") == false){
-            $('#cupons--messages').show();
-            $('#cupons--messages-error').html('Nenhum cupom foi encontrado.');
-        }
-
-        if ($(".cupons--cupom").length > 8){
-            $('.moreCupoms').show();
-        }
-    },
-    error: function(error) {
-        $('#cupons--messages').show();
-        $('#cupons--messages-error').html('Não foi possível carregar os cupons.');
-        console.log('ERROR - ', error);
-    }
-});
-
-//---------------------------------------------
 // VERIFICAÇÃO BOTÃO CUPONS
 
 $(document).ready(function() {
-    $('#removeFilter').on("click", function(){
-        $('.cupons--cupom').remove();
-        $('.moreCupoms').show();
-        $('.cupons--filter').hide();
-        $('.fltnt').hide();
+    var cupoms;
+    var filters = $(".filtros--list");
+    var list = $(".cupons--list");
 
-        Cupom.Loaders.loadDefaultCupom();
-    });
-
-    $('body').on("click", '.filtro-es[data-action]', cupoms, function(idx, obj){
-        var type = $(this).prop('id');
-        $('.cupons--filter').show();
-        $('.moreCupoms').hide();
-        $('.fltnt').hide();
-        $('.cupons--cupom').remove();
-
-        Cupom.Loaders.loadCupomFiltered(type, this.id);
-    });
-
-    $('#seeMore').on('click', function(){
-        $('.cupons--cupom:nth-child(1n+7)').css('display', 'table');
-        $('.moreCupoms').hide();
-    });
-
-    $('body').on('click', '.redeemOffer', function(){
-        Cupom.Loaders.openModal();
-    });
-
-    $('#close').on('click', function(){
-        Cupom.Loaders.closeModal();
+    $.get({
+        url: "cupons.json",
+        dataType: "json",
+        success: function(data) {
+            cupoms = data;
+            Cupom.Loaders.loadFilters();
+            Cupom.Loaders.loadDefaultCupom();
+        },
+        error: function(error) {
+            $('#cupons--messages').show();
+            $('#cupons--messages-error').html('Não foi possível carregar os cupons.');
+            console.log('ERROR - ', error);
+        }
     });
 
     var Cupom = Cupom || {};
@@ -82,8 +31,13 @@ $(document).ready(function() {
                 $.each(cupoms, function(idx, obj) {
                     $("<li class='cupons--cupom' data-type=" + obj.type + "><h2>" + obj.titulo + "</h2><figure><img src='" + obj.image + "'/></figure><p>" + obj.desc + "</p><button class='redeemOffer'>Resgatar</button></li>").appendTo(list);
                 });
+
+                if ($(".cupons--cupom").length > 8){
+                    $('.moreCupoms').show();
+                }
             },
             loadCupomFiltered: function(type, id) {
+                $('.cupons--list').empty();
                 if (id == type) {
                     cupoms.forEach((obj, idx) => {
                         if ( obj.type == type ) {
@@ -102,7 +56,7 @@ $(document).ready(function() {
             loadFilters: function() {
                 $.each(cupoms, function(idx, obj) {
                     var titleFilter = obj.type.replace("-", " ");
-                    var filterCount = $(filters).find('.filtro-es[id="' + obj.type + '"]');
+                    var filterCount = filters.find('.filtro-es[id="' + obj.type + '"]');
         
                     if ( filterCount.length == 0 ) {
                         $("<li class='filtro-es' id='" + obj.type + "' data-action><p>" + titleFilter + "</p></li>").appendTo(filters);
@@ -117,17 +71,54 @@ $(document).ready(function() {
                 $('.modal').fadeOut();
             },
             generateCupom: function(length){
-                $('#cupomCode').empty();
+                $('#cupomCode').val();
                 var result           = '';
                 var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                 var charactersLength = characters.length;
                 for ( var i = 0; i < length; i++ ) {
                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
                 }
-                $('#cupomCode').html(result);
+                $('#cupomCode').val(result);
             }
         }
     })();
+
+    $('#removeFilter').on("click", function(){
+        $('.cupons--cupom').remove();
+        $('.moreCupoms').show();
+        $('.cupons--filter').hide();
+        $('.fltnt').hide();
+
+        Cupom.Loaders.loadDefaultCupom();
+    });
+
+    $('body').on("click", '.filtro-es[data-action]', cupoms, function(idx, obj){
+        var type = $(this).prop('id');
+        $('.cupons--filter').show();
+        $('.moreCupoms').hide();
+        $('.fltnt').hide();
+
+        Cupom.Loaders.loadCupomFiltered(type, this.id);
+    });
+
+    $('#seeMore').on('click', function(){
+        $('.cupons--cupom:nth-child(1n+7)').css('display', 'table');
+        $('.moreCupoms').hide();
+    });
+
+    $('body').on('click', '.redeemOffer', function(){
+        Cupom.Loaders.openModal();
+    });
+
+    $('#close').on('click', function(){
+        Cupom.Loaders.closeModal();
+    });
+
+    $('#copyToClipboard').click(()=>{
+        var cupom = $('#cupomCode');
+        cupom.select();
+        document.execCommand("Copy");
+    });
 });
 
 // FACEBOOK SCRIPT
